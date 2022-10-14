@@ -1,12 +1,12 @@
 import setuptools
 
 setuptools.setup(
-    name='yarl',
+    name='pyyarl',
     version='0.0.1',
-    url='https://github.com/jeremyephron/yarl',
+    url='https://github.com/jeremyephron/pyyarl',
     author='Jeremy Ephron',
     author_email='jeremye@cs.stanford.edu',
-    description='Yet Another Rate Limiter',
+    description='Yet Another Rate Limiter (for Python)',
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
     packages=setuptools.find_packages(),
