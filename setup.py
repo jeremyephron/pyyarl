@@ -2,7 +2,7 @@ import setuptools
 
 setuptools.setup(
     name='pyyarl',
-    version='0.0.1',
+    version='1.0.0',
     url='https://github.com/jeremyephron/pyyarl',
     author='Jeremy Ephron',
     author_email='jeremye@cs.stanford.edu',
