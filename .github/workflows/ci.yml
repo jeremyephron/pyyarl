@@ -1,0 +1,71 @@
+name: CI
+
+on:
+  workflow_dispatch:
+    paths:
+      - "*"
+  pull_request:
+    paths:
+      - "**.py"
+  push:
+    paths:
+      - "**.py"
+
+jobs:
+  static_check:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: true
+      matrix:
+        os: ["ubuntu-latest"]
+        python-version: ["3.10"]
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v2
+
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+          architecture: x64
+
+      - name: Install
+        run: |
+          pip install -e .
+          pip install mypy
+
+      - name: Run static checker
+        run: |
+          mypy \
+            --install-types \
+            --non-interactive \
+            --allow-redefinition \
+            --disallow-untyped-defs \
+            pyyarl
+
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: true
+      matrix:
+        os: ["ubuntu-latest", "macos-latest"]
+        python-version: ["3.7", "3.8", "3.9", "3.10"]
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v2
+
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+          architecture: x64
+
+      - name: Install
+        run: |
+          pip install -e .
+          pip install -r requirements_test.txt
+
+      - name: Run tests
+        run: pytest

@@ -6,10 +6,10 @@ some callable can be called.
 
 """
 
+from collections import deque
 import functools
 import threading
 import time
-from queue import deque
 
 from typing import Any, Callable
 
@@ -41,7 +41,7 @@ class RateLimiter:
         self.total_n_completed_tasks = 0
 
         self._lock = threading.Lock()
-        self._completed_tasks = deque(maxlen=self.max_calls)
+        self._completed_tasks: deque[int] = deque(maxlen=self.max_calls)
 
     def __call__(self, func: Callable) -> Callable:
         @functools.wraps(func)
