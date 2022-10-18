@@ -1,4 +1,5 @@
 # pyyarl
+[![CI](https://github.com/jeremyephron/pyterminate/actions/workflows/ci.yml/badge.svg)](https://github.com/jeremyephron/pyterminate/actions/workflows/ci.yml)
 
 `pyyarl` (Yet Another Rate Limiter for Python) is a Python package for rate
 limiting function calls.
