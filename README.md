@@ -9,7 +9,7 @@ have the desired behavior in many use cases. For example, many clear tasks only
 when the period has elapsed, rather than using a sliding window, or they may
 mark a task as done prior to running the function rather than after.
 
-`pyyarl` uses a sliding window of completion times to enforce the rate limit, and
+`pyyarl` uses a sliding window of completion times to enforce the rate limit and
 is simple to use. `pyyarl` currently supports single and multithreaded execution.
 
 ## Table of Contents
